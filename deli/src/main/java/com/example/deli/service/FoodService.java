@@ -21,7 +21,7 @@ public class FoodService {
 
     //음식 등록
     @Transactional
-    public String additionalFood(List<FoodRequestDto> foodRequestDto,Long restaurantId) {
+    public void additionalFood(List<FoodRequestDto> foodRequestDto,Long restaurantId) {
         for (int i = 0; i < foodRequestDto.size(); i++) {
             Food food = new Food(foodRequestDto.get(i), restaurantId);
             if(food.getPrice() < 100 || food.getPrice() > 1000000 || food.getPrice() % 100 != 0) {
@@ -32,7 +32,6 @@ public class FoodService {
             }
             foodRepsitory.save(food);
         }
-        return "등록완료";
     }
 
     public List<Food> getMenu(Long restaurantId) {
