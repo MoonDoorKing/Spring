@@ -16,9 +16,10 @@ public class Restaurant {
     // ID 가 자동으로 생성 및 증가
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
+    @Column(name = "restaurant_id")
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false,name = "restaurant_name")
     private String name;
 
     @Column(nullable = false)

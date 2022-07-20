@@ -22,14 +22,14 @@ public class Food {
 
     @Column(nullable = false)
     private int price;
+    //외래키는 기본키랑 연결이 된다.
+    @ManyToOne
+    @JoinColumn(name="restaurant_id")
+    private Restaurant restaurant;
 
-    @JsonIgnore
-    @Column(nullable = false)
-    private Long restaurantId;
-
-    public Food(FoodRequestDto foodRequestDto,Long restaurantId) {
+    public Food(FoodRequestDto foodRequestDto,Restaurant restaurant) {
         this.name = foodRequestDto.getName();
-        this.price = foodRequestDto.getPrice();;
-        this.restaurantId = restaurantId;
+        this.price = foodRequestDto.getPrice();
+        this.restaurant = restaurant;
     }
 }

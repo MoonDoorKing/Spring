@@ -5,23 +5,29 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Getter @Setter
 @NoArgsConstructor
-public class Order {
+public class Orders {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
+    @Column(name = "order_id")
     private Long id;
 
-    @Column(nullable = false)
-    private Long restaurantId;
-
-    @Column(nullable = false)
-    private int deliveryFee;
+    @ManyToOne
+    @JoinColumn(name="restaurant_id")
+    private Restaurant restaurant;
 
     @Column(nullable = false)
     private int totalPrice;
+
+    public Orders(Restaurant restaurant) {
+        this.restaurant = restaurant;
+    }
+
+    public void update(int totalPrice) {
+        this.totalPrice = totalPrice;
+    }
 }

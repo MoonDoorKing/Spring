@@ -3,6 +3,7 @@ package com.example.deli.controller;
 import com.example.deli.dto.RestaurantRequestDto;
 import com.example.deli.model.Restaurant;
 import com.example.deli.service.RestaurantService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,15 +13,10 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
+@RequiredArgsConstructor
 public class RestaurantController {
 
     private final RestaurantService restaurantService;
-
-    @Autowired
-    public RestaurantController(RestaurantService restaurantService)
-    {
-        this.restaurantService = restaurantService;
-    }
 
     //음식점 등록
     @PostMapping("/restaurant/register")

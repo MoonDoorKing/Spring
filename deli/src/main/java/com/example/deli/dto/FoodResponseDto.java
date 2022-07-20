@@ -1,9 +1,12 @@
 package com.example.deli.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @Getter
-public class FoodRequestDto {
+@AllArgsConstructor
+public class FoodResponseDto {
+    private Long id;
     private String name;
     private int price;
 }
